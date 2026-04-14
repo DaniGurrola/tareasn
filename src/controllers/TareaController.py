@@ -13,3 +13,4 @@ class TareaController:
         
         self.model.crear(id_usuario,titulo,desc,prio,clas)
         return True, "Tarea guardada"
+    
