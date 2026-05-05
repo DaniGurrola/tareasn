@@ -24,6 +24,12 @@ wheels = [
 ]
 
 [[package]]
+name = "app"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/11/f386fe5dedd254167f16cca77427eeb6ac0918e344ae881bcdec8057b3d5/app-0.0.1.zip", hash = "sha256:214549e746d777292d807eec7713c2cea332e08e037c923cd61ee1d5ab7a127f", size = 2160, upload-time = "2016-07-27T07:30:28.762Z" }
+
+[[package]]
 name = "bcrypt"
 version = "5.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -259,6 +265,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl", hash = "sha256:e561593fccf61e8a20fc46dfc2dfe075b8be7d0188df33f221ad1f0139180f9d", size = 463580, upload-time = "2025-11-26T15:11:44.605Z" },
 ]
 
+[package.optional-dependencies]
+email = [
+    { name = "email-validator" },
+]
+
 [[package]]
 name = "pydantic-core"
 version = "2.41.5"
@@ -343,25 +354,27 @@ wheels = [
 ]
 
 [[package]]
-name = "tareas"
+name = "tarea"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
+    { name = "app" },
     { name = "bcrypt" },
     { name = "email-validator" },
     { name = "flet" },
     { name = "mysql-connector-python" },
-    { name = "pydantic" },
+    { name = "pydantic", extra = ["email"] },
     { name = "python-dotenv" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "app", specifier = ">=0.0.1" },
     { name = "bcrypt", specifier = ">=5.0.0" },
     { name = "email-validator", specifier = ">=2.3.0" },
     { name = "flet", specifier = ">=0.82.2" },
     { name = "mysql-connector-python", specifier = ">=9.6.0" },
-    { name = "pydantic", specifier = ">=2.12.5" },
+    { name = "pydantic", extras = ["email"], specifier = ">=2.12.5" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
 ]
 
